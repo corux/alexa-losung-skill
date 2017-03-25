@@ -1,3 +1,3 @@
-import Alexalosungskill from './alexa-losung-skill';
+import AlexaLosungSkill from './alexa-losung-skill';
 
-module.exports = Alexalosungskill;
+module.exports = AlexaLosungSkill;

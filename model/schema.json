@@ -1,12 +1,24 @@
 {
   "intents": [
-    { "intent": "AMAZON.CancelIntent" },
-    { "intent": "AMAZON.HelpIntent" },
-    { "intent": "AMAZON.StopIntent" },
     {
-      "intent": "hello",
+      "intent": "AMAZON.CancelIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "TodayIntent"
+    },
+    {
+      "intent": "DateIntent",
       "slots": [
-        { "name": "name", "type": "LITERAL" }
+        {
+          "name": "date",
+          "type": "AMAZON.DATE"
+        }
       ]
     }
   ]
