@@ -18,6 +18,11 @@ export default class AlexaLosungSkill {
   }
 
   _includeVerse(text) {
+    // replace Psalm 136,3.4 with Psalm 136,3-4
+    const verse = text.substring(text.lastIndexOf(',') + 1);
+    text = text.replace(verse, verse.replace('.', '-'));
+
+    // replace Psalm 136,3-4 with Psalm 136 Vers 3-4
     return text.replace(/,([^,]*)$/, ' Vers ' + '$1');
   }
 

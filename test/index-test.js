@@ -35,6 +35,14 @@ test('DateIntent', () => {
   });
 });
 
+test('Improved Verse Text', () => {
+  const event = Request.intent('DateIntent', { date: '2016-01-01' }).build();
+
+  return Skill(event).then(response => {
+    expect(response.response.outputSpeech.ssml).to.contain('Psalm 136 Vers 3-4');
+  });
+});
+
 test('AMAZON.StopIntent', () => {
   const event = Request.intent('AMAZON.StopIntent').build();
 
