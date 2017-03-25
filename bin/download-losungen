@@ -1,0 +1,40 @@
+#!/usr/bin/env babel-node
+
+import fs from 'fs';
+import path from 'path';
+import nomnom from 'nomnom';
+import process from 'process';
+import http from 'http';
+import unzip from 'unzip';
+
+const exists = (filename) => fs.existsSync(filename) ? undefined : `${filename} does not exist`;
+
+let { destination } = nomnom
+  .script('download-losungen')
+  .option('destination', { required: true, callback: exists })
+  .parse();
+
+const currentYear = new Date().getFullYear();
+for (let i = -1; i <= 1; i++) {
+  const year = currentYear + i;
+  const url = `http://www.brueder-unitaet.de/download/Losung_${year}_XML.zip`;
+  const destinationFile = path.join(process.cwd(), destination, `${year}.xml`);
+  http.get(url, response => {
+    if (response.statusCode === 200) {
+      const file = fs.createWriteStream(destinationFile);
+      response.pipe(unzip.Parse())
+        .on('entry', (entry) => {
+          if (entry.path.toLowerCase().endsWith('.xml')) {
+            entry.pipe(file);
+          } else {
+            entry.autodrain();
+          }
+        })
+    } else {
+      console.error(`Failed to download losungen for ${year} (Status code ${response.statusCode})`);
+      if (year === currentYear) {
+        process.exit(1);
+      }
+    }
+  });
+}
