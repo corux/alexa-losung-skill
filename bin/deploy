@@ -4,17 +4,19 @@ import fs from 'fs';
 import path from 'path';
 import lambda from 'node-aws-lambda';
 import nomnom from 'nomnom';
+import process from 'process';
 
 const exists = (filename) => fs.existsSync(filename) ? undefined : `${filename} does not exist`;
-const requireFile = (transform = i => i) => (filename) => transform(require(path.join(process.cwd(), filename)));
 
-const { config, zip } = nomnom
-                          .script('deploy')
-                          .option('config', { required: true, callback: exists, transform: requireFile(_ => _.default) })
-                          .option('zip', { full: 'package', abbr: 'p', required: true, callback: exists })
-                          .parse();
+let { config, zip } = nomnom
+  .script('deploy')
+  .option('config', { required: true, callback: exists })
+  .option('zip', { full: 'package', abbr: 'p', required: true, callback: exists })
+  .parse();
 
-lambda.deploy(zip, config, function(error) {
+config = require(path.join(process.cwd(), config));
+
+lambda.deploy(zip, config, function (error) {
   if (error) {
     console.error('Deployment failed:', error);
     process.exit(1);
