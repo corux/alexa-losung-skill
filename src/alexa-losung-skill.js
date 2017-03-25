@@ -17,12 +17,18 @@ export default class AlexaLosungSkill {
     throw new Error('Failed to load data');
   }
 
+  _includeVerse(text) {
+    return text.replace(/,([^,]*)$/, ' Vers ' + '$1');
+  }
+
   _createResponse(date) {
     try {
       const losung = this._getLosung(date);
       return say(<speak>
-        <p>Die Losung von heute steht in {losung.Losungsvers}. {losung.Losungstext}</p>
-        <p>Der Lehrtext steht in {losung.Lehrtextvers}. {losung.Lehrtext}</p>
+        <p>Die Losung von heute steht in {this._includeVerse(losung.Losungsvers) }</p>
+        <p>{losung.Losungstext}</p>
+        <p>Der Lehrtext steht in {this._includeVerse(losung.Lehrtextvers) }</p>
+        <p>{losung.Lehrtext}</p>
       </speak>);
     } catch (e) {
       const dateString = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
