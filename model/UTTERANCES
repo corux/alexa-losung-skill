@@ -1,3 +1,4 @@
 TodayIntent {lies|sage|zeige|} {mir|} {die|} Losung von heute {vor|}
 TodayIntent {lies|sage|zeige|} {mir|} {die|} heutige Losung
 DateIntent {lies|sage|zeige|} {mir|} {die|} Losung {von|vom} {-|date}
+DateIntent {nach|} {die|der|} Losung {von|vom} {-|date}

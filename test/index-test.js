@@ -21,6 +21,20 @@ test('LaunchRequest', () => {
   });
 });
 
+test('DateIntent', () => {
+  const event = Request.intent('DateIntent', { date: '2017-01-01' }).build();
+
+  return Skill(event).then(response => {
+    expect(response.response.outputSpeech.ssml).to.contain('Die Losung vom 1.1.2017');
+    expect(response).to.containSubset({
+      response: {
+        shouldEndSession: true,
+        outputSpeech: { type: 'SSML' }
+      }
+    });
+  });
+});
+
 test('AMAZON.StopIntent', () => {
   const event = Request.intent('AMAZON.StopIntent').build();
 

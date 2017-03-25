@@ -24,8 +24,11 @@ export default class AlexaLosungSkill {
   _createResponse(date) {
     try {
       const losung = this._getLosung(date);
+      const isToday = date.toDateString() === new Date().toDateString();
+      const spokenDate = isToday ? 'von heute' :
+        `vom ${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
       return say(<speak>
-        <p>Die Losung von heute steht in {this._includeVerse(losung.Losungsvers) }</p>
+        <p>Die Losung {spokenDate} steht in {this._includeVerse(losung.Losungsvers) }</p>
         <p>{losung.Losungstext}</p>
         <p>Der Lehrtext steht in {this._includeVerse(losung.Lehrtextvers) }</p>
         <p>{losung.Lehrtext}</p>
@@ -42,8 +45,18 @@ export default class AlexaLosungSkill {
   }
 
   @Intent('TodayIntent')
-  today() {
+  todayIntent() {
     return this._createResponse(new Date());
+  }
+
+  @Intent('DateIntent')
+  dateIntent({ date }) {
+    // check for invalid date
+    if (Number.isNaN(Date.parse(date))) {
+      return this.today();
+    }
+
+    return this._createResponse(new Date(date));
   }
 
   @Intent('AMAZON.HelpIntent')
