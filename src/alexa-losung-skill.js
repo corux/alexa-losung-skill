@@ -58,7 +58,7 @@ export default class AlexaLosungSkill {
   dateIntent({ date }) {
     // check for invalid date
     if (Number.isNaN(Date.parse(date))) {
-      return this.today();
+      return this.todayIntent();
     }
 
     return this._createResponse(new Date(date));
