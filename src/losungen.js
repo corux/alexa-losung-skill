@@ -13,7 +13,10 @@ export default class Losungen {
     throw new Error('Failed to load data');
   }
 
-  _includeVerse(text) {
+  _fixVerseForSpeak(text) {
+    // replace 1.Samuel with 1. Samuel
+    text = text.replace(/^([0-9]+\.)([a-zA-Z])/, '$1 $2');
+
     // replace Psalm 136,3.4 with Psalm 136,3-4
     const verse = text.substring(text.lastIndexOf(',') + 1);
     text = text.replace(verse, verse.replace('.', '-'));
@@ -32,9 +35,9 @@ export default class Losungen {
     try {
       const losung = this._getLosung(date);
       return <speak>
-        <p>Die Losung {spokenDate} steht in {this._includeVerse(losung.Losungsvers) }</p>
+        <p>Die Losung {spokenDate} steht in {this._fixVerseForSpeak(losung.Losungsvers) }</p>
         <p>{losung.Losungstext}</p>
-        <p>Der Lehrtext steht in {this._includeVerse(losung.Lehrtextvers) }</p>
+        <p>Der Lehrtext steht in {this._fixVerseForSpeak(losung.Lehrtextvers) }</p>
         <p>{losung.Lehrtext}</p>
       </speak>;
     } catch (e) {
