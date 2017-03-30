@@ -14,14 +14,10 @@ export default {
     path: path('build')
   },
   module: {
-    loaders: [
+    rules: [
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
-      { test: /\.xml$/, loader: 'xml-loader?explicitArray=false' }
+      { test: /\.xml$/, loader: 'xml-loader', options: { explicitArray: false } }
     ]
-  },
-  plugins: [
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurrenceOrderPlugin(true)
-  ]
+  }
 };
