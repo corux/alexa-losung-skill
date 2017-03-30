@@ -5,7 +5,8 @@ const path = (...parts) => Path.join(__dirname, '..', ...parts);
 
 export default {
   entry: {
-    skill: ['babel-polyfill', path('src', 'skill.js')]
+    skill: ['babel-polyfill', path('src', 'skill.js')],
+    flashBriefing: ['babel-polyfill', path('src', 'flash-briefing.js')]
   },
   devtool: 'source-map',
   target: 'node',

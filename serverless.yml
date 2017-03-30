@@ -18,3 +18,13 @@ functions:
         - build/skill*
     events:
       - alexaSkill
+  flash-briefing:
+    handler: build/flashBriefing.handler
+    package:
+      include:
+        - build/flashBriefing*
+    events:
+      - http:
+          path: today
+          method: get
+          integration: LAMBDA
