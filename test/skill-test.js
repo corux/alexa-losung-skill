@@ -1,5 +1,5 @@
 import test from 'ava';
-import { handler as Skill } from '..';
+import { handler as Skill } from '../build/skill';
 import Request from 'alexa-request';
 import chai from 'chai';
 import chaiSubset from 'chai-subset';

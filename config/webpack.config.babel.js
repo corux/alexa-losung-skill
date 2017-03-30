@@ -4,13 +4,15 @@ import webpack from 'webpack';
 const path = (...parts) => Path.join(__dirname, '..', ...parts);
 
 export default {
-  entry: ['babel-polyfill', path('src', 'index.js')],
+  entry: {
+    skill: ['babel-polyfill', path('src', 'skill.js')]
+  },
   devtool: 'source-map',
   target: 'node',
   output: {
     libraryTarget: 'commonjs',
     library: 'handler',
-    filename: 'index.js',
+    filename: '[name].js',
     path: path('build')
   },
   module: {
