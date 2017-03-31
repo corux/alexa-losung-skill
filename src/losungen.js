@@ -1,5 +1,3 @@
-import ssml from 'alexa-ssml-jsx';
-
 export default class Losungen {
   _getLosung(date) {
     const data = require(`../assets/${date.getFullYear()}.xml`);
@@ -34,12 +32,11 @@ export default class Losungen {
       `vom ${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
     try {
       const losung = this._getLosung(date);
-      return <speak>
-        <p>Die Losung {spokenDate} steht in {this._fixVerseForSpeak(losung.Losungsvers) }</p>
-        <p>{losung.Losungstext}</p>
-        <p>Der Lehrtext steht in {this._fixVerseForSpeak(losung.Lehrtextvers) }</p>
-        <p>{losung.Lehrtext}</p>
-      </speak>;
+      // need to use "!" as long pause after the verse, as "." will not be handled correctly
+      return `Die Losung ${spokenDate} steht in ${this._fixVerseForSpeak(losung.Losungsvers)}!
+        ${losung.Losungstext}
+        Der Lehrtext steht in ${this._fixVerseForSpeak(losung.Lehrtextvers)}!
+        ${losung.Lehrtext}`;
     } catch (e) {
       return `Ich konnte keine Losung ${spokenDate} finden.`;
     }

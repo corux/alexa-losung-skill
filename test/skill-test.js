@@ -11,11 +11,11 @@ test('LaunchRequest', () => {
   const event = Request.launchRequest().build();
 
   return Skill(event).then(response => {
-    expect(response.response.outputSpeech.ssml).to.contain('Die Losung von heute');
+    expect(response.response.outputSpeech.text).to.contain('Die Losung von heute');
     expect(response).to.containSubset({
       response: {
         shouldEndSession: true,
-        outputSpeech: { type: 'SSML' }
+        outputSpeech: { type: 'PlainText' }
       }
     });
   });
@@ -25,11 +25,11 @@ test('DateIntent', () => {
   const event = Request.intent('DateIntent', { date: '2017-01-01' }).build();
 
   return Skill(event).then(response => {
-    expect(response.response.outputSpeech.ssml).to.contain('Die Losung vom 1.1.2017');
+    expect(response.response.outputSpeech.text).to.contain('Die Losung vom 1.1.2017');
     expect(response).to.containSubset({
       response: {
         shouldEndSession: true,
-        outputSpeech: { type: 'SSML' }
+        outputSpeech: { type: 'PlainText' }
       }
     });
   });
@@ -39,7 +39,7 @@ test('Fixed Verse Text for speak', () => {
   const event = Request.intent('DateIntent', { date: '2016-01-01' }).build();
 
   return Skill(event).then(response => {
-    expect(response.response.outputSpeech.ssml).to.contain('Psalm 136 Vers 3-4');
+    expect(response.response.outputSpeech.text).to.contain('Psalm 136 Vers 3-4');
   });
 });
 
@@ -47,7 +47,7 @@ test('Fixed Chapter Name for speak', () => {
   const event = Request.intent('DateIntent', { date: '2017-03-28' }).build();
 
   return Skill(event).then(response => {
-    expect(response.response.outputSpeech.ssml).to.contain('1. Samuel 10 Vers 7');
+    expect(response.response.outputSpeech.text).to.contain('1. Samuel 10 Vers 7');
   });
 });
 
