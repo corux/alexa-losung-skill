@@ -13,9 +13,8 @@
     "pretest": "npm run build",
     "test": "ava",
     "posttest": "npm run lint",
-    "package": "bestzip build/package.zip build/index.js build/UTTERANCES",
-    "predeploy": "npm run package",
-    "deploy": "bin/deploy --config config/lambda.config.js --package build/package.zip"
+    "deploy:prod": "serverless deploy --stage production",
+    "deploy:dev": "serverless deploy function -f skill && serverless deploy function -f flash-briefing"
   },
   "ava": {
     "babel": "inherit"

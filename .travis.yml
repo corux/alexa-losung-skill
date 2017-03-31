@@ -6,5 +6,5 @@ node_js:
 deploy:
   provider: script
   skip_cleanup: true
-  script: npm run deploy
+  script: npm run deploy:prod
   on: master
