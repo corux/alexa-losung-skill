@@ -8,6 +8,7 @@ module.exports = (event, context, callback) => {
         uid: dateText,
         updateDate: dateText,
         titleText: 'Die Losung von heute',
-        mainText: text
+        mainText: text,
+        redirectionUrl: 'http://www.losungen.de/fileadmin/media-losungen/kalender/kalendermobil.html'
     });
 };
