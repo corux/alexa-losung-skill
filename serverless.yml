@@ -19,10 +19,10 @@ functions:
     events:
       - alexaSkill
   flash-briefing:
-    handler: build/flashBriefing.handler
+    handler: build/flash-briefing.handler
     package:
       include:
-        - build/flashBriefing*
+        - build/flash-briefing*
     events:
       - http:
           path: today
