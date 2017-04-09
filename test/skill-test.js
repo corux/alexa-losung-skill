@@ -43,6 +43,14 @@ test('Fixed Verse Text for speak', () => {
   });
 });
 
+test('Contains name of sundays', () => {
+  const event = Request.intent('DateIntent', { date: '2017-01-01' }).build();
+
+  return Skill(event).then(response => {
+    expect(response.response.outputSpeech.text).to.contain('Neujahr');
+  });
+});
+
 test('Fixed Chapter Name for speak', () => {
   const event = Request.intent('DateIntent', { date: '2017-03-28' }).build();
 

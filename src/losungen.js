@@ -32,8 +32,13 @@ export default class Losungen {
       `vom ${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
     try {
       const losung = this._getLosung(date);
+      let sunday = '';
+      if (losung.Sonntag) {
+        sunday = `, ${losung.Sonntag}, `;
+      }
+
       // need to use "!" as long pause after the verse, as "." will not be handled correctly
-      return `Die Losung ${spokenDate} steht in ${this._fixVerseForSpeak(losung.Losungsvers)}!
+      return `Die Losung ${spokenDate}${sunday} steht in ${this._fixVerseForSpeak(losung.Losungsvers)}!
         ${losung.Losungstext}
         Der Lehrtext steht in ${this._fixVerseForSpeak(losung.Lehrtextvers)}!
         ${losung.Lehrtext}`;
