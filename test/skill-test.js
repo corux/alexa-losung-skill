@@ -43,6 +43,23 @@ test('Fixed Verse Text for speak', () => {
   });
 });
 
+test('Fixed Losungstext for speak', () => {
+  const event = Request.intent('DateIntent', { date: '2017-01-15' }).build();
+
+  return Skill(event).then(response => {
+    expect(response.response.outputSpeech.text).to.not.contain('#');
+  });
+});
+
+test('Fixed Lehrtext for speak', () => {
+  const event = Request.intent('DateIntent', { date: '2017-11-22' }).build();
+
+  return Skill(event).then(response => {
+    expect(response.response.outputSpeech.text).to.not.contain('#');
+    expect(response.response.outputSpeech.text).to.not.contain('/');
+  });
+});
+
 test('Contains name of sundays', () => {
   const event = Request.intent('DateIntent', { date: '2017-01-01' }).build();
 

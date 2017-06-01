@@ -23,6 +23,16 @@ export default class Losungen {
     return text.replace(/,([^,]*)$/, ' Vers ' + '$1');
   }
 
+  _fixTextForSpeak(text) {
+    // replace #value# with value
+    text = text.replace(/#([^#]*)#/g, '$1');
+
+    // replace /value/ with value
+    text = text.replace(/\/([^\/]*)\//g, '$1');
+
+    return text;
+  }
+
   /**
    * Gets the text, which should be read for the given date.
    */
@@ -39,9 +49,9 @@ export default class Losungen {
 
       // need to use "!" as long pause after the verse, as "." will not be handled correctly
       return `Die Losung ${spokenDate}${sunday} steht in ${this._fixVerseForSpeak(losung.Losungsvers)}!
-        ${losung.Losungstext}
+        ${this._fixTextForSpeak(losung.Losungstext)}
         Der Lehrtext steht in ${this._fixVerseForSpeak(losung.Lehrtextvers)}!
-        ${losung.Lehrtext}`;
+        ${this._fixTextForSpeak(losung.Lehrtext)}`;
     } catch (e) {
       return `Ich konnte keine Losung ${spokenDate} finden.`;
     }
