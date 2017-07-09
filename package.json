@@ -8,7 +8,7 @@
     "download-losungen": "bin/download-losungen --destination assets/",
     "prebuild": "npm run download-losungen",
     "build": "npm-run-all --parallel build:skill build:utterances",
-    "build:skill": "webpack -p --config config/webpack.config.babel.js",
+    "build:skill": "webpack --config config/webpack.config.babel.js",
     "build:utterances": "mkdir -p build && bin/utterances --schema model/schema.json --utterances model/UTTERANCES > build/UTTERANCES",
     "pretest": "npm run build",
     "test": "ava",
@@ -17,7 +17,8 @@
     "deploy:dev": "serverless deploy function -f skill && serverless deploy function -f flash-briefing"
   },
   "ava": {
-    "babel": "inherit"
+    "babel": "inherit",
+    "failWithoutAssertions": false
   },
   "devDependencies": {
     "alexa-annotations": "^9.0.1",
