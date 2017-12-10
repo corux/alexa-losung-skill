@@ -1,6 +1,5 @@
 import { Skill, Launch, Intent, SessionEnded } from 'alexa-annotations';
 import { say, ask } from 'alexa-response';
-import ssml from 'alexa-ssml-jsx';
 import Losungen from './losungen';
 
 @Skill

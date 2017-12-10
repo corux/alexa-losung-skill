@@ -2,7 +2,6 @@
   "presets": ["es2015", "stage-1"],
   "plugins": [
     "add-module-exports",
-    "transform-decorators-legacy",
-    ["transform-react-jsx", { "pragma": "ssml" }]
+    "transform-decorators-legacy"
   ]
 }
