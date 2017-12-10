@@ -1,25 +1,128 @@
 {
-  "intents": [
-    {
-      "intent": "AMAZON.CancelIntent"
-    },
-    {
-      "intent": "AMAZON.HelpIntent"
-    },
-    {
-      "intent": "AMAZON.StopIntent"
-    },
-    {
-      "intent": "TodayIntent"
-    },
-    {
-      "intent": "DateIntent",
-      "slots": [
-        {
-          "name": "date",
-          "type": "AMAZON.DATE"
-        }
-      ]
-    }
-  ]
+  "languageModel": {
+    "intents": [
+      {
+        "name": "AMAZON.CancelIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.HelpIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.StopIntent",
+        "samples": []
+      },
+      {
+        "name": "DateIntent",
+        "samples": [
+          "lies mir die Losung von {date}",
+          "sage mir die Losung von {date}",
+          "zeige mir die Losung von {date}",
+          "mir die Losung von {date}",
+          "lies die Losung von {date}",
+          "sage die Losung von {date}",
+          "zeige die Losung von {date}",
+          "die Losung von {date}",
+          "lies mir Losung von {date}",
+          "sage mir Losung von {date}",
+          "zeige mir Losung von {date}",
+          "mir Losung von {date}",
+          "lies Losung von {date}",
+          "sage Losung von {date}",
+          "zeige Losung von {date}",
+          "Losung von {date}",
+          "lies mir die Losung vom {date}",
+          "sage mir die Losung vom {date}",
+          "zeige mir die Losung vom {date}",
+          "mir die Losung vom {date}",
+          "lies die Losung vom {date}",
+          "sage die Losung vom {date}",
+          "zeige die Losung vom {date}",
+          "die Losung vom {date}",
+          "lies mir Losung vom {date}",
+          "sage mir Losung vom {date}",
+          "zeige mir Losung vom {date}",
+          "mir Losung vom {date}",
+          "lies Losung vom {date}",
+          "sage Losung vom {date}",
+          "zeige Losung vom {date}",
+          "Losung vom {date}",
+          "nach die Losung von {date}",
+          "nach der Losung von {date}",
+          "der Losung von {date}",
+          "nach Losung von {date}",
+          "nach die Losung vom {date}",
+          "nach der Losung vom {date}",
+          "der Losung vom {date}",
+          "nach Losung vom {date}",
+          "nach dem {date}",
+          "dem {date}",
+          "nach {date}",
+          "{date}"
+        ],
+        "slots": [
+          {
+            "name": "date",
+            "type": "AMAZON.DATE"
+          }
+        ]
+      },
+      {
+        "name": "TodayIntent",
+        "samples": [
+          "lies mir die Losung von heute vor",
+          "sage mir die Losung von heute vor",
+          "zeige mir die Losung von heute vor",
+          "mir die Losung von heute vor",
+          "lies die Losung von heute vor",
+          "sage die Losung von heute vor",
+          "zeige die Losung von heute vor",
+          "die Losung von heute vor",
+          "lies mir Losung von heute vor",
+          "sage mir Losung von heute vor",
+          "zeige mir Losung von heute vor",
+          "mir Losung von heute vor",
+          "lies Losung von heute vor",
+          "sage Losung von heute vor",
+          "zeige Losung von heute vor",
+          "Losung von heute vor",
+          "lies mir die Losung von heute",
+          "sage mir die Losung von heute",
+          "zeige mir die Losung von heute",
+          "mir die Losung von heute",
+          "lies die Losung von heute",
+          "sage die Losung von heute",
+          "zeige die Losung von heute",
+          "die Losung von heute",
+          "lies mir Losung von heute",
+          "sage mir Losung von heute",
+          "zeige mir Losung von heute",
+          "mir Losung von heute",
+          "lies Losung von heute",
+          "sage Losung von heute",
+          "zeige Losung von heute",
+          "Losung von heute",
+          "lies mir die heutige Losung",
+          "sage mir die heutige Losung",
+          "zeige mir die heutige Losung",
+          "mir die heutige Losung",
+          "lies die heutige Losung",
+          "sage die heutige Losung",
+          "zeige die heutige Losung",
+          "die heutige Losung",
+          "lies mir heutige Losung",
+          "sage mir heutige Losung",
+          "zeige mir heutige Losung",
+          "mir heutige Losung",
+          "lies heutige Losung",
+          "sage heutige Losung",
+          "zeige heutige Losung",
+          "heutige Losung"
+        ],
+        "slots": []
+      }
+    ],
+    "invocationName": "die tages losung"
+  }
 }
