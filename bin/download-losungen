@@ -4,7 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import nomnom from 'nomnom';
 import process from 'process';
-import http from 'http';
+import https from 'https';
 import unzip from 'unzip';
 
 const exists = (filename) => fs.existsSync(filename) ? undefined : `${filename} does not exist`;
@@ -17,9 +17,9 @@ let { destination } = nomnom
 const currentYear = new Date().getFullYear();
 for (let i = -1; i <= 1; i++) {
   const year = currentYear + i;
-  const url = `http://www.brueder-unitaet.de/download/Losung_${year}_XML.zip`;
+  const url = `https://www.losungen.de/fileadmin/media-losungen/download/Losung_${year}_XML.zip`;
   const destinationFile = path.join(process.cwd(), destination, `${year}.xml`);
-  http.get(url, response => {
+  https.get(url, response => {
     if (response.statusCode === 200) {
       const file = fs.createWriteStream(destinationFile);
       response.pipe(unzip.Parse())
