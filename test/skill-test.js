@@ -22,10 +22,10 @@ test('LaunchRequest', () => {
 });
 
 test('DateIntent', () => {
-  const event = Request.intent('DateIntent', { date: '2017-01-01' }).build();
+  const event = Request.intent('DateIntent', { date: '2018-01-01' }).build();
 
   return Skill(event).then(response => {
-    expect(response.response.outputSpeech.text).to.contain('Die Losung vom 1.1.2017');
+    expect(response.response.outputSpeech.text).to.contain('Die Losung vom 1.1.2018');
     expect(response).to.containSubset({
       response: {
         shouldEndSession: true,
@@ -36,10 +36,10 @@ test('DateIntent', () => {
 });
 
 test('Fixed Verse Text for speak', () => {
-  const event = Request.intent('DateIntent', { date: '2016-01-01' }).build();
+  const event = Request.intent('DateIntent', { date: '2018-01-02' }).build();
 
   return Skill(event).then(response => {
-    expect(response.response.outputSpeech.text).to.contain('Psalm 136 Vers 3-4');
+    expect(response.response.outputSpeech.text).to.contain('Jesaja 61 Vers 1-3');
   });
 });
 
@@ -61,7 +61,7 @@ test('Fixed Lehrtext for speak', () => {
 });
 
 test('Contains name of sundays', () => {
-  const event = Request.intent('DateIntent', { date: '2017-01-01' }).build();
+  const event = Request.intent('DateIntent', { date: '2018-01-01' }).build();
 
   return Skill(event).then(response => {
     expect(response.response.outputSpeech.text).to.contain('Neujahr');
@@ -69,10 +69,10 @@ test('Contains name of sundays', () => {
 });
 
 test('Fixed Chapter Name for speak', () => {
-  const event = Request.intent('DateIntent', { date: '2017-03-28' }).build();
+  const event = Request.intent('DateIntent', { date: '2018-01-15' }).build();
 
   return Skill(event).then(response => {
-    expect(response.response.outputSpeech.text).to.contain('1. Samuel 10 Vers 7');
+    expect(response.response.outputSpeech.text).to.contain('1. Samuel 12 Vers 24');
   });
 });
 
