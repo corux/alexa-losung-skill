@@ -50,6 +50,7 @@
     "serverless": "^1.24.1",
     "unzip": "^0.1.11",
     "webpack": "^3.10.0",
+    "webpack-sources": "1.0.1",
     "xml-loader": "^1.2.1"
   },
   "files": [
