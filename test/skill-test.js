@@ -43,6 +43,14 @@ test('Fixed Verse Text for speak', () => {
   });
 });
 
+test('Fixed Verse Notation for speak', () => {
+  const event = Request.intent('DateIntent', { date: '2017-12-17' }).build();
+
+  return Skill(event).then(response => {
+    expect(response.response.outputSpeech.text).to.contain('1. Könige 2 Vers 1-3');
+  });
+});
+
 test('Fixed Losungstext for speak', () => {
   const event = Request.intent('DateIntent', { date: '2017-01-15' }).build();
 

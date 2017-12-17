@@ -15,12 +15,17 @@ export default class Losungen {
     // replace 1.Samuel with 1. Samuel
     text = text.replace(/^([0-9]+\.)([a-zA-Z])/, '$1 $2');
 
+    // replace 1. Könige 2,1-2.3 with 1. Könige 2,1-3
+    text = text.replace(/([0-9]+)\-([0-9]+)\.([0-9]+)/, '$1-$3');
+
     // replace Psalm 136,3.4 with Psalm 136,3-4
     const verse = text.substring(text.lastIndexOf(',') + 1);
     text = text.replace(verse, verse.replace('.', '-'));
 
     // replace Psalm 136,3-4 with Psalm 136 Vers 3-4
-    return text.replace(/,([^,]*)$/, ' Vers ' + '$1');
+    text = text.replace(/,([^,]*)$/, ' Vers ' + '$1');
+
+    return text;
   }
 
   _fixTextForSpeak(text) {
