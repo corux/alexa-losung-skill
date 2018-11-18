@@ -42,9 +42,7 @@ export default class Losungen {
    * Gets the text, which should be read for the given date.
    */
   getText(date) {
-    const isToday = date.toDateString() === new Date().toDateString();
-    const spokenDate = isToday ? 'von heute' :
-      `vom ${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
+    const spokenDate = this._getSpokenDate(date);
     try {
       const losung = this._getLosung(date);
       let sunday = '';
@@ -59,6 +57,25 @@ export default class Losungen {
         ${this._fixTextForSpeak(losung.Lehrtext)}`;
     } catch (e) {
       return `Ich konnte keine Losung ${spokenDate} finden.`;
+    }
+  }
+
+  _getSpokenDate(date) {
+    const today = new Date();
+    const yesterday = new Date();
+    const tomorrow = new Date();
+    yesterday.setDate(today.getDate() - 1);
+    tomorrow.setDate(today.getDate() + 1);
+
+    switch (date.toDateString()) {
+      case today.toDateString():
+        return 'von heute';
+      case yesterday.toDateString():
+        return 'von gestern';
+      case tomorrow.toDateString():
+        return 'für morgen';
+      default:
+        return `vom ${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
     }
   }
 }

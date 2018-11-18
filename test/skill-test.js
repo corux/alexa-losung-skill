@@ -35,6 +35,38 @@ test('DateIntent', () => {
   });
 });
 
+test('DateIntent for yesterday', () => {
+  const yesterday = new Date();
+  yesterday.setDate(new Date().getDate() - 1);
+  const event = Request.intent('DateIntent', { date: yesterday.toISOString() }).build();
+
+  return Skill(event).then(response => {
+    expect(response.response.outputSpeech.text).to.contain('Die Losung von gestern');
+    expect(response).to.containSubset({
+      response: {
+        shouldEndSession: true,
+        outputSpeech: { type: 'PlainText' }
+      }
+    });
+  });
+});
+
+test('DateIntent for tomorrow', () => {
+  const tomorrow = new Date();
+  tomorrow.setDate(new Date().getDate() + 1);
+  const event = Request.intent('DateIntent', { date: tomorrow.toISOString() }).build();
+
+  return Skill(event).then(response => {
+    expect(response.response.outputSpeech.text).to.contain('Die Losung für morgen');
+    expect(response).to.containSubset({
+      response: {
+        shouldEndSession: true,
+        outputSpeech: { type: 'PlainText' }
+      }
+    });
+  });
+});
+
 test('Fixed Verse Text for speak', () => {
   const event = Request.intent('DateIntent', { date: '2018-01-02' }).build();
 
