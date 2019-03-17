@@ -22,10 +22,10 @@ test('LaunchRequest', () => {
 });
 
 test('DateIntent', () => {
-  const event = Request.intent('DateIntent', { date: '2018-01-01' }).build();
+  const event = Request.intent('DateIntent', { date: '2019-01-01' }).build();
 
   return Skill(event).then(response => {
-    expect(response.response.outputSpeech.text).to.contain('Die Losung vom 1.1.2018');
+    expect(response.response.outputSpeech.text).to.contain('Die Losung vom 1.1.2019');
     expect(response).to.containSubset({
       response: {
         shouldEndSession: true,
@@ -68,40 +68,43 @@ test('DateIntent for tomorrow', () => {
 });
 
 test('Fixed Verse Text for speak', () => {
-  const event = Request.intent('DateIntent', { date: '2018-01-02' }).build();
+  const event = Request.intent('DateIntent', { date: '2019-11-21' }).build();
 
   return Skill(event).then(response => {
-    expect(response.response.outputSpeech.text).to.contain('Jesaja 61 Vers 1-3');
+    expect(response.response.outputSpeech.text).to.contain('Römer 16 Vers 25-27');
   });
 });
 
 test('Fixed Verse Notation for speak', () => {
-  const event = Request.intent('DateIntent', { date: '2017-12-17' }).build();
+  const event = Request.intent('DateIntent', { date: '2019-12-01' }).build();
 
   return Skill(event).then(response => {
-    expect(response.response.outputSpeech.text).to.contain('1. Könige 2 Vers 1-3');
+    expect(response.response.outputSpeech.text).to.contain('Hebräer 13 Vers 20-21');
   });
 });
 
 test('Fixed Losungstext for speak', () => {
-  const event = Request.intent('DateIntent', { date: '2017-01-15' }).build();
+  const event = Request.intent('DateIntent', { date: '2019-01-06' }).build();
 
   return Skill(event).then(response => {
+    expect(response.response.outputSpeech.text).to.contain('Die Losung vom 6.1.2019');
     expect(response.response.outputSpeech.text).to.not.contain('#');
+    expect(response.response.outputSpeech.text).to.not.contain('/');
   });
 });
 
 test('Fixed Lehrtext for speak', () => {
-  const event = Request.intent('DateIntent', { date: '2017-11-22' }).build();
+  const event = Request.intent('DateIntent', { date: '2019-10-08' }).build();
 
   return Skill(event).then(response => {
+    expect(response.response.outputSpeech.text).to.contain('Die Losung vom 8.10.2019');
     expect(response.response.outputSpeech.text).to.not.contain('#');
     expect(response.response.outputSpeech.text).to.not.contain('/');
   });
 });
 
 test('Contains name of sundays', () => {
-  const event = Request.intent('DateIntent', { date: '2018-01-01' }).build();
+  const event = Request.intent('DateIntent', { date: '2019-01-01' }).build();
 
   return Skill(event).then(response => {
     expect(response.response.outputSpeech.text).to.contain('Neujahr');
@@ -117,10 +120,10 @@ test('Contains name of sundays including fixed verse', () => {
 });
 
 test('Fixed Chapter Name for speak', () => {
-  const event = Request.intent('DateIntent', { date: '2018-01-15' }).build();
+  const event = Request.intent('DateIntent', { date: '2019-04-28' }).build();
 
   return Skill(event).then(response => {
-    expect(response.response.outputSpeech.text).to.contain('1. Samuel 12 Vers 24');
+    expect(response.response.outputSpeech.text).to.contain('1. Petrus 2 Vers 2');
   });
 });
 
