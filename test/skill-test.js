@@ -108,6 +108,14 @@ test('Contains name of sundays', () => {
   });
 });
 
+test('Contains name of sundays including fixed verse', () => {
+  const event = Request.intent('DateIntent', { date: '2019-04-28' }).build();
+
+  return Skill(event).then(response => {
+    expect(response.response.outputSpeech.text).to.contain('1. Sonntag nach Ostern – Quasimodogeniti (Wie die neugeborenen Kindlein. 1. Petrus 2 Vers 2)');
+  });
+});
+
 test('Fixed Chapter Name for speak', () => {
   const event = Request.intent('DateIntent', { date: '2018-01-15' }).build();
 

@@ -13,7 +13,7 @@ export default class Losungen {
 
   _fixVerseForSpeak(text) {
     // replace 1.Samuel with 1. Samuel
-    text = text.replace(/^([0-9]+\.)([a-zA-Z])/, '$1 $2');
+    text = text.replace(/([0-9]+\.)([a-zA-Z])/, '$1 $2');
 
     // replace 1. Könige 2,1-2.3 with 1. Könige 2,1-3
     text = text.replace(/([0-9]+)\-([0-9]+)\.([0-9]+)/, '$1-$3');
@@ -35,6 +35,9 @@ export default class Losungen {
     // replace /value/ with value
     text = text.replace(/\/([^\/]*)\//g, '$1');
 
+    // Fix pronounciation of words
+    text = text.replace('Passionszeit', 'Passion-szeit');
+
     return text;
   }
 
@@ -47,7 +50,7 @@ export default class Losungen {
       const losung = this._getLosung(date);
       let sunday = '';
       if (losung.Sonntag) {
-        sunday = `, ${losung.Sonntag}, `;
+        sunday = `, ${this._fixTextForSpeak(this._fixVerseForSpeak(losung.Sonntag))}, `;
       }
 
       // need to use "!" as long pause after the verse, as "." will not be handled correctly
