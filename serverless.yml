@@ -2,7 +2,7 @@ service: alexa-losung-skill
 
 provider:
   name: aws
-  runtime: nodejs6.10
+  runtime: nodejs8.10
   region: eu-west-1
   memorySize: 128
 
@@ -13,17 +13,17 @@ package:
 
 functions:
   skill:
-    handler: build/skill.handler
+    handler: dist/skill.handler
     package:
       include:
-        - build/skill*
+        - dist/skill*
     events:
       - alexaSkill
   flash-briefing:
-    handler: build/flash-briefing.handler
+    handler: dist/flash-briefing.handler
     package:
       include:
-        - build/flash-briefing*
+        - dist/flash-briefing*
     events:
       - http:
           path: today

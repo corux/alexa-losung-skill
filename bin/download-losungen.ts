@@ -1,35 +1,32 @@
-#!/usr/bin/env babel-node
+import * as program from "commander";
+import * as fs from "fs";
+import * as https from "https";
+import * as path from "path";
+import * as process from "process";
+import * as unzipper from "unzipper";
 
-import fs from 'fs';
-import path from 'path';
-import nomnom from 'nomnom';
-import process from 'process';
-import https from 'https';
-import unzip from 'unzip';
+program
+  .option("--destination <path>", "Schema file to update.")
+  .parse(process.argv);
 
-const exists = (filename) => fs.existsSync(filename) ? undefined : `${filename} does not exist`;
-
-let { destination } = nomnom
-  .script('download-losungen')
-  .option('destination', { required: true, callback: exists })
-  .parse();
+const destination = program.destination;
 
 const currentYear = new Date().getFullYear();
 for (let i = -1; i <= 1; i++) {
   const year = currentYear + i;
   const url = `https://www.losungen.de/fileadmin/media-losungen/download/Losung_${year}_XML.zip`;
   const destinationFile = path.join(process.cwd(), destination, `${year}.xml`);
-  https.get(url, response => {
+  https.get(url, (response) => {
     if (response.statusCode === 200) {
       const file = fs.createWriteStream(destinationFile);
-      response.pipe(unzip.Parse())
-        .on('entry', (entry) => {
-          if (entry.path.toLowerCase().endsWith('.xml')) {
+      response.pipe(unzipper.Parse() as any)
+        .on("entry", (entry) => {
+          if (entry.path.toLowerCase().endsWith(".xml")) {
             entry.pipe(file);
           } else {
             entry.autodrain();
           }
-        })
+        });
     } else {
       console.error(`Failed to download losungen for ${year} (Status code ${response.statusCode})`);
       if (year === currentYear) {
