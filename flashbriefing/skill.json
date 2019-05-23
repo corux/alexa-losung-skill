@@ -1,0 +1,58 @@
+{
+  "manifest": {
+    "apis": {
+      "flashBriefing": {
+        "locales": {
+          "de-DE": {
+            "feeds": [
+              {
+                "name": "Die Losung von Heute",
+                "url": "https://gwm3z69anh.execute-api.eu-west-1.amazonaws.com/production/today",
+                "imageUri": "https://s3-eu-west-1.amazonaws.com/alexa-losung-skill/icon512.png",
+                "contentType": "TEXT",
+                "genre": "OTHER",
+                "updateFrequency": "DAILY",
+                "vuiPreamble": "In der Losung",
+                "isDefault": true
+              }
+            ],
+            "customErrorMessage": "Die Losung ist aktuell nicht verfügbar."
+          }
+        }
+      }
+    },
+    "manifestVersion": "1.0",
+    "permissions": [],
+    "privacyAndCompliance": {
+      "allowsPurchases": false,
+      "usesPersonalInfo": false,
+      "isChildDirected": false,
+      "isExportCompliant": true,
+      "containsAds": false
+    },
+    "publishingInformation": {
+      "locales": {
+        "de-DE": {
+          "name": "Die Losungen (Flash Briefing)",
+          "smallIconUri": "https://s3-eu-west-1.amazonaws.com/alexa-losung-skill/icon108.png",
+          "largeIconUri": "https://s3-eu-west-1.amazonaws.com/alexa-losung-skill/icon512.png",
+          "summary": "Die Losungen für die tägliche Zusammenfassung.",
+          "description": "Der Skill erlaubt die Integration der Losung in die tägliche Zusammenfassung. Die Losung besteht aus zwei Bibelversen pro Tag: die Losung aus dem Alten Testament und der Lehrtext aus dem Neuen Testament.\n\nDie Losungen werden erstellt von der Evangelische Brüder-Unität – Herrnhuter Brüdergemeinde. Weitere Informationen finden Sie unter www.losungen.de.\n\nDieser Skill ist eine inoffizielle Umsetztung, welche nicht von der Evangelische Brüder-Unität entwickelt wird.",
+          "examplePhrases": [
+            "Alexa, Was ist meine tägliche Zusammenfassung?",
+            "Alexa, Was sind die Nachrichten?"
+          ],
+          "keywords": [
+            "bibel",
+            "losung",
+            "losungen"
+          ]
+        }
+      },
+      "isAvailableWorldwide": true,
+      "testingInstructions": "No special testing required.",
+      "category": "NEWS",
+      "distributionCountries": []
+    }
+  }
+}
