@@ -16,6 +16,10 @@ for (let i = -1; i <= 1; i++) {
   const year = currentYear + i;
   const url = `https://www.losungen.de/fileadmin/media-losungen/download/Losung_${year}_XML.zip`;
   const destinationFile = path.join(process.cwd(), destination, `${year}.xml`);
+  if (fs.existsSync(destinationFile)) {
+    console.log(`Losung already exists for ${year}. Skipping download`);
+    continue;
+  }
   https.get(url, (response) => {
     if (response.statusCode === 200) {
       const file = fs.createWriteStream(destinationFile);

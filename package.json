@@ -10,6 +10,7 @@
     "test:watch": "jest --watch",
     "lint": "tslint --project tsconfig.json",
     "lint:fix": "npm run lint -- --fix",
+    "prebuild": "npm run download-losungen",
     "build": "webpack --config webpack.config.ts --require ts-node/register",
     "build:dev": "npm run build -- --mode development --watch",
     "build:prod": "npm run lint && npm run build -- --mode production",
