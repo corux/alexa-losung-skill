@@ -1,0 +1,45 @@
+{
+  "manifest": {
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "uri": "arn:aws:lambda:eu-west-1:347839150037:function:alexa-losung-skill-production-skill",
+          "sourceDir": "dist"
+        }
+      }
+    },
+    "manifestVersion": "1.0",
+    "permissions": [],
+    "privacyAndCompliance": {
+      "allowsPurchases": false,
+      "usesPersonalInfo": false,
+      "isChildDirected": false,
+      "isExportCompliant": true,
+      "containsAds": false
+    },
+    "publishingInformation": {
+      "locales": {
+        "de-DE": {
+          "name": "Die Losungen (Inoffiziell)",
+          "smallIconUri": "https://s3-eu-west-1.amazonaws.com/alexa-losung-skill/icon108.png",
+          "largeIconUri": "https://s3-eu-west-1.amazonaws.com/alexa-losung-skill/icon512.png",
+          "summary": "Gottes Wort für jeden Tag.",
+          "description": "Der Skill wird mit \"Alexa, öffne die Tageslosung\" gestartet und antwortet dann mit der heutigen Losung. Die Losung besteht aus zwei Bibelversen pro Tag: die Losung aus dem Alten Testament und der Lehrtext aus dem Neuen Testament.\n\nDie Losungen werden erstellt von der Evangelische Brüder-Unität – Herrnhuter Brüdergemeinde. Weitere Informationen finden Sie unter www.losungen.de.\n\nDieser Skill ist eine inoffizielle Umsetztung, welche nicht von der Evangelische Brüder-Unität entwickelt wird.",
+          "examplePhrases": [
+            "Alexa, öffne die Tageslosung",
+            "Alexa, frage die Tageslosung nach dem 1. Januar 2019"
+          ],
+          "keywords": [
+            "bibel",
+            "losung",
+            "losungen"
+          ]
+        }
+      },
+      "isAvailableWorldwide": true,
+      "testingInstructions": "No special testing required.",
+      "category": "NEWS",
+      "distributionCountries": []
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "die tages losung",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent"
+        },
+        {
+          "name": "AMAZON.HelpIntent"
+        },
+        {
+          "name": "AMAZON.StopIntent"
+        },
+        {
+          "name": "TodayIntent",
+          "samples": [
+            "lies mir die Losung von heute vor",
+            "zeige mir die Losung von heute",
+            "die Losung von heute",
+            "Losung von heute",
+            "die heutige Losung",
+            "heutige Losung"
+          ]
+        },
+        {
+          "name": "DateIntent",
+          "slots": [
+            {
+              "name": "date",
+              "type": "AMAZON.DATE"
+            }
+          ],
+          "samples": [
+            "lies mir die Losung von {date} vor",
+            "sage mir die Losung vom {date}",
+            "zeige mir die Losung vom {date}",
+            "zeige die Losung von {date}",
+            "die Losung von {date}",
+            "die Losung vom {date}",
+            "lies Losung von {date} vor",
+            "Losung von {date}",
+            "Losung vom {date}",
+            "nach dem {date}",
+            "dem {date}",
+            "von {date}",
+            "nach {date}",
+            "{date}"
+          ]
+        }
+      ]
+    }
+  },
+  "version": "1"
+}
