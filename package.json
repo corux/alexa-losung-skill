@@ -40,7 +40,7 @@
     "typescript": "3.4.5",
     "virtual-alexa": "0.7.2",
     "unzipper": "0.9.15",
-    "webpack": "4.32.0",
+    "webpack": "4.32.2",
     "webpack-command": "0.4.2"
   }
 }
