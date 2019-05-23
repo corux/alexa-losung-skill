@@ -21,6 +21,7 @@
     "deploy:skills": "ask deploy"
   },
   "devDependencies": {
+    "@types/aws-lambda": "8.10.26",
     "@types/jest": "24.0.13",
     "@types/node": "10.14.1",
     "ask-cli": "1.7.2",
