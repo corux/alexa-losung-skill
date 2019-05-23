@@ -18,7 +18,7 @@ functions:
       include:
         - dist/skill*
     events:
-      - alexaSkill
+      - alexaSkill: amzn1.ask.skill.c39a3d20-a390-4a89-915b-5040dda5e467
   flash-briefing:
     handler: dist/flash-briefing.handler
     package:
