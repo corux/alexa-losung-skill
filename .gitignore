@@ -4,3 +4,4 @@ npm-debug.log
 aws.config.json
 assets/*.xml
 .serverless
+hooks/
