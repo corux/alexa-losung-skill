@@ -40,7 +40,7 @@ export class Losungen {
 
   private async loadLosung(year: number): Promise<ILosung[]> {
     const xmlString = await import(`../../assets/${year}.xml`);
-    const data: { FreeXml: { Losungen: ILosung[] } } = parse(xmlString);
+    const data: { FreeXml: { Losungen: ILosung[] } } = parse(xmlString.default || xmlString);
     if (data && data.FreeXml && data.FreeXml.Losungen) {
       return data.FreeXml.Losungen;
     }
@@ -50,7 +50,7 @@ export class Losungen {
 
   private async getLosung(date: Date): Promise<ILosung> {
     const data = await this.loadLosung(date.getFullYear());
-    const dateString = getDateWithoutTime(date).toISOString().split("T")[0] + "T00:00:00";
+    const dateString = date.toISOString().split("T")[0] + "T00:00:00";
     return data.find((n) => n.Datum === dateString);
   }
 
