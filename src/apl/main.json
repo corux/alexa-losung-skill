@@ -1,0 +1,148 @@
+{
+    "document": {
+        "type": "APL",
+        "version": "1.0",
+        "theme": "dark",
+        "import": [
+            {
+                "name": "alexa-layouts",
+                "version": "1.0.0"
+            },
+            {
+                "name": "alexa-styles",
+                "version": "1.0.0"
+            }
+        ],
+        "resources": [
+            {
+                "description": "Common margins and padding",
+                "dimensions": {
+                    "marginLeft": 40,
+                    "marginRight": 40,
+                    "marginBottom": 40
+                }
+            }
+        ],
+        "styles": {
+            "textStyle": {
+                "values": {
+                    "color": "@colorText",
+                    "fontSize": "@fontSizeLarge",
+                    "fontWeight": "@fontWeightLight",
+                    "textAlign": "${viewport.shape == 'round' ? 'center' : 'auto'}"
+                }
+            },
+            "verseStyle": {
+                "values": {
+                    "fontStyle": "italic",
+                    "fontSize": "@fontSizeSmall",
+                    "fontWeight": "@fontWeightMedium",
+                    "color": "@colorSecondaryText",
+                    "textAlign": "${viewport.shape == 'round' ? 'center' : 'auto'}"
+                }
+            }
+        },
+        "layouts": {
+            "BiblePassage": {
+                "parameters": [
+                    "text",
+                    "verse"
+                ],
+                "description": "Shows a bible passage with text and verse",
+                "item": [
+                    {
+                        "type": "Container",
+                        "items": [
+                            {
+                                "type": "Text",
+                                "style": "textStyle",
+                                "text": "${text}"
+                            },
+                            {
+                                "type": "Text",
+                                "style": "verseStyle",
+                                "text": "${verse}"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "mainTemplate": {
+            "parameters": [
+                "payload"
+            ],
+            "items": [
+                {
+                    "type": "Container",
+                    "height": "100vh",
+                    "items": [
+                        {
+                            "type": "Image",
+                            "width": "100vw",
+                            "height": "100vh",
+                            "source": "https://s3-eu-west-1.amazonaws.com/alexa-losung-skill/background.jpg",
+                            "scale": "best-fill",
+                            "position": "absolute"
+                        },
+                        {
+                            "headerTitle": "${payload.data.title}",
+                            "headerSubtitle": "${payload.data.subtitle}",
+                            "headerAttributionImage": "https://s3-eu-west-1.amazonaws.com/alexa-losung-skill/icon512.png",
+                            "type": "AlexaHeader"
+                        },
+                        {
+                            "type": "ScrollView",
+                            "grow": 1,
+                            "paddingLeft": "@marginLeft",
+                            "paddingRight": "@marginRight",
+                            "paddingBottom": "@marginBottom",
+                            "item": [
+                                {
+                                    "type": "Container",
+                                    "item": [
+                                        {
+                                            "type": "Container",
+                                            "item": {
+                                                "text": "${payload.data.losung.text}",
+                                                "verse": "${payload.data.losung.verse}",
+                                                "type": "BiblePassage"
+                                            }
+                                        },
+                                        {
+                                            "type": "Container",
+                                            "item": [
+                                                {
+                                                    "text": "${payload.data.lehrtext.text}",
+                                                    "verse": "${payload.data.lehrtext.verse}",
+                                                    "type": "BiblePassage"
+                                                }
+                                            ],
+                                            "spacing": "@spacingSmall"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "datasources": {
+        "data": {
+            "type": "object",
+            "objectId": "sample",
+            "title": "Die Losung vom 26. Mai 2019",
+            "subtitle": "5. Sonntag nach Ostern – Rogate (Betet!)",
+            "losung": {
+                "text": "Das ist mir lieb, dass der HERR meine Stimme und mein Flehen hört.",
+                "verse": "Psalm 116,1"
+            },
+            "lehrtext": {
+                "text": "Wenn du betest, so geh in dein Kämmerlein und schließ die Tür zu und bete zu deinem Vater, der im Verborgenen ist; und dein Vater, der in das Verborgene sieht, wird dir’s vergelten.",
+                "verse": "Matthäus 6,6"
+            }
+        }
+    }
+}

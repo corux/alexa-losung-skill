@@ -13,6 +13,9 @@
           "name": "AMAZON.StopIntent"
         },
         {
+          "name": "AMAZON.NavigateHomeIntent"
+        },
+        {
           "name": "TodayIntent",
           "samples": [
             "lies mir die Losung von heute vor",

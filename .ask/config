@@ -6,11 +6,11 @@
       "merge": {},
       "resources": {
         "manifest": {
-          "eTag": "d8a5d53cfb7c6d0f3dc738db522b7188"
+          "eTag": "6b3632fdedd7810ce2ab3dbd94ce612f"
         },
         "interactionModel": {
           "de-DE": {
-            "eTag": "0a0167a5799cfaca82c1c9c35072b4a6"
+            "eTag": "a8ffb6521b0114503d065c1473faa62f"
           }
         },
         "lambda": [
@@ -23,7 +23,7 @@
             "codeUri": "dist/",
             "functionName": "alexa-losung-skill-production-skill",
             "handler": "skill.handler",
-            "revisionId": "07c93cd6-29a5-48b8-a63f-bc9f1e577aac",
+            "revisionId": "83b31c93-be86-4d27-b7ff-eb8a4b6c0b26",
             "runtime": "nodejs8.10"
           }
         ]
