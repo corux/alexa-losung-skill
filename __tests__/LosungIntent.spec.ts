@@ -52,6 +52,11 @@ describe("DateIntent", () => {
       expect(result.response.outputSpeech.ssml).toContain("Hebräer 13 Vers 20-21");
     });
 
+    it("should apply Verse Notation fix only to Verse", async () => {
+      const result = await alexa.request().intent("DateIntent").slot("date", "2019-05-26").send();
+      expect(result.response.outputSpeech.ssml).toContain("5. Sonntag nach Ostern");
+    });
+
     it("should fix Losungstext for speak", async () => {
       const result = await alexa.request().intent("DateIntent").slot("date", "2019-01-06").send();
       const response = result.response.outputSpeech.ssml

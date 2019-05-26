@@ -62,11 +62,10 @@ export class Losungen {
     text = text.replace(/([0-9]+)\-([0-9]+)\.([0-9]+)/, "$1-$3");
 
     // replace Psalm 136,3.4 with Psalm 136,3-4
-    const verse = text.substring(text.lastIndexOf(",") + 1);
-    text = text.replace(verse, verse.replace(".", "-"));
+    text = text.replace(/([0-9]+),([0-9]+)\.([0-9]+)/, "$1,$2-$3");
 
     // replace Psalm 136,3-4 with Psalm 136 Vers 3-4
-    text = text.replace(/,([^,]*)$/, " Vers " + "$1");
+    text = text.replace(/,([^,]*)$/, " Vers $1");
 
     return text;
   }
