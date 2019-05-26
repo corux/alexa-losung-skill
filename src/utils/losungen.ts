@@ -16,9 +16,7 @@ interface ILosung {
 
 export class Losungen {
 
-  /**
-   * Gets the text, which should be read for the given date.
-   */
+  /** Gets the text, which should be read for the given date. */
   public async getText(date: Date): Promise<string> {
     const spokenDate = this.getSpokenDate(date);
     try {
@@ -38,6 +36,13 @@ export class Losungen {
     }
   }
 
+  /** Gets the losung object for the given date. */
+  public async getLosung(date: Date): Promise<ILosung> {
+    const data = await this.loadLosung(date.getFullYear());
+    const dateString = date.toISOString().split("T")[0] + "T00:00:00";
+    return data.find((n) => n.Datum === dateString);
+  }
+
   private async loadLosung(year: number): Promise<ILosung[]> {
     const xmlString = await import(`../../assets/${year}.xml`);
     const data: { FreeXml: { Losungen: ILosung[] } } = parse(xmlString.default || xmlString);
@@ -46,12 +51,6 @@ export class Losungen {
     }
 
     throw new Error("Failed to load data");
-  }
-
-  private async getLosung(date: Date): Promise<ILosung> {
-    const data = await this.loadLosung(date.getFullYear());
-    const dateString = date.toISOString().split("T")[0] + "T00:00:00";
-    return data.find((n) => n.Datum === dateString);
   }
 
   private fixVerseForSpeak(text: string): string {
