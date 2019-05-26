@@ -11,6 +11,10 @@ program
 
 const destination = program.destination;
 
+if (!fs.existsSync(destination)) {
+  fs.mkdirSync(destination);
+}
+
 const currentYear = new Date().getFullYear();
 for (let i = -1; i <= 1; i++) {
   const year = currentYear + i;
