@@ -1,5 +1,6 @@
 import { HandlerInput } from "ask-sdk-core";
 import { IntentRequest, Response } from "ask-sdk-model";
+import { DateTime } from "luxon";
 import { document as AplMainDocument } from "../apl/main.json";
 import { BaseIntentHandler, getResponseBuilder, Intents, Losungen, Request } from "../utils";
 
@@ -11,8 +12,10 @@ export class LosungIntentHandler extends BaseIntentHandler {
     const dateSlot = intentRequest.intent && intentRequest.intent.slots.date;
 
     // get requested date from slot or use today as fallback
-    const timestamp = dateSlot && Date.parse(dateSlot.value) || new Date().getTime();
-    const date = new Date(timestamp);
+    let date: DateTime = dateSlot && DateTime.fromISO(dateSlot.value);
+    if (!date || !date.isValid) {
+      date = DateTime.local();
+    }
 
     const instance = new Losungen();
     const losung = await instance.getLosung(date);

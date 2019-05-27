@@ -1,4 +1,5 @@
 import { parse } from "fast-xml-parser";
+import { DateTime, Duration } from "luxon";
 
 export function getDateWithoutTime(date: Date): Date {
   return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
@@ -17,7 +18,7 @@ interface ILosung {
 export class Losungen {
 
   /** Gets the text, which should be read for the given date. */
-  public async getText(date: Date): Promise<string> {
+  public async getText(date: DateTime): Promise<string> {
     const spokenDate = this.getSpokenDate(date);
     try {
       const losung = await this.getLosung(date);
@@ -37,9 +38,9 @@ export class Losungen {
   }
 
   /** Gets the losung object for the given date. */
-  public async getLosung(date: Date): Promise<ILosung> {
-    const data = await this.loadLosung(date.getFullYear());
-    const dateString = date.toISOString().split("T")[0] + "T00:00:00";
+  public async getLosung(date: DateTime): Promise<ILosung> {
+    const data = await this.loadLosung(date.year);
+    const dateString = date.toFormat("yyyy-MM-dd'T00:00:00'");
     return data.find((n) => n.Datum === dateString);
   }
 
@@ -82,22 +83,21 @@ export class Losungen {
     return text;
   }
 
-  private getSpokenDate(date: Date): string {
-    const today = new Date();
-    const yesterday = new Date();
-    const tomorrow = new Date();
-    yesterday.setDate(today.getDate() - 1);
-    tomorrow.setDate(today.getDate() + 1);
+  private getSpokenDate(date: DateTime): string {
+    const today = DateTime.local();
+    const oneDay = Duration.fromISO("P1D");
+    const yesterday = today.minus(oneDay);
+    const tomorrow = today.plus(oneDay);
 
-    switch (date.toDateString()) {
-      case today.toDateString():
+    switch (date.toISODate()) {
+      case today.toISODate():
         return "von heute";
-      case yesterday.toDateString():
+      case yesterday.toISODate():
         return "von gestern";
-      case tomorrow.toDateString():
+      case tomorrow.toISODate():
         return "für morgen";
       default:
-        return `vom ${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
+        return `vom ${date.toFormat("d.M.yyyy")}`;
     }
   }
 }
