@@ -1,10 +1,6 @@
 import { parse } from "fast-xml-parser";
 import { DateTime, Duration } from "luxon";
 
-export function getDateWithoutTime(date: Date): Date {
-  return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
-}
-
 interface ILosung {
   Datum: string;
   Wtag: string;
