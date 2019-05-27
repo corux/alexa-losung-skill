@@ -26,11 +26,11 @@ export class LosungIntentHandler extends BaseIntentHandler {
         datasources: {
           data: {
             lehrtext: {
-              text: losung.Lehrtext,
+              text: this.fixText(losung.Lehrtext),
               verse: losung.Lehrtextvers,
             },
             losung: {
-              text: losung.Losungstext,
+              text: this.fixText(losung.Losungstext),
               verse: losung.Losungsvers,
             },
             subtitle: losung.Sonntag,
@@ -42,5 +42,15 @@ export class LosungIntentHandler extends BaseIntentHandler {
         type: "Alexa.Presentation.APL.RenderDocument",
       })
       .getResponse();
+  }
+
+  private fixText(text: string): string {
+    // replace #value# with <b>value</b>
+    text = text.replace(/#([^#]*)#/g, "<b>$1</b>");
+
+    // replace /value/ with <i>value</i>
+    text = text.replace(/\/([^\/]*)\//g, "<i>$1</i>");
+
+    return text;
   }
 }
