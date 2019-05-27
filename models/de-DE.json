@@ -20,10 +20,15 @@
           "samples": [
             "lies mir die Losung von heute vor",
             "zeige mir die Losung von heute",
+            "wie ist die heutige Losung",
+            "die Losung für den heutigen Tag",
             "die Losung von heute",
             "Losung von heute",
             "die heutige Losung",
-            "heutige Losung"
+            "heutige Losung",
+            "die Losung",
+            "Losung des Tages",
+            "Losung vorlesen"
           ]
         },
         {
@@ -48,6 +53,7 @@
             "dem {date}",
             "von {date}",
             "nach {date}",
+            "für {date}",
             "{date}"
           ]
         }
