@@ -42,7 +42,7 @@ export class Losungen {
 
   private async loadLosung(year: number): Promise<ILosung[]> {
     const xmlString = await import(`../data/${year}.xml`);
-    const data: { FreeXml: { Losungen: ILosung[] } } = parse(xmlString.default || xmlString);
+    const data: { FreeXml: { Losungen: ILosung[] } } = parse(xmlString);
     if (data && data.FreeXml && data.FreeXml.Losungen) {
       return data.FreeXml.Losungen;
     }

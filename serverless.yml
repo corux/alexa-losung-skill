@@ -14,10 +14,10 @@ package:
 
 functions:
   skill:
-    handler: dist/skill.handler
+    handler: dist/index.handler
     package:
       include:
-        - dist/skill*
+        - dist/index*
     events:
       - alexaSkill: amzn1.ask.skill.c39a3d20-a390-4a89-915b-5040dda5e467
   flash-briefing:
