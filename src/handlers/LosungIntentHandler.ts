@@ -9,7 +9,7 @@ import { BaseIntentHandler, getResponseBuilder, Intents, Losungen, Request } fro
 export class LosungIntentHandler extends BaseIntentHandler {
   public async handle(handlerInput: HandlerInput): Promise<Response> {
     const intentRequest = handlerInput.requestEnvelope.request as IntentRequest;
-    const dateSlot = intentRequest.intent && intentRequest.intent.slots.date;
+    const dateSlot = (intentRequest.intent && intentRequest.intent.slots || {}).date;
 
     // get requested date from slot or use today as fallback
     let date: DateTime = dateSlot && DateTime.fromISO(dateSlot.value);

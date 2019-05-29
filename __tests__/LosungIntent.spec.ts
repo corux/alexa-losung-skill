@@ -1,6 +1,22 @@
 import { VirtualAlexa } from "virtual-alexa";
 import { handler } from "../src";
 
+describe("TodayIntent", () => {
+  let alexa: VirtualAlexa;
+  beforeEach(() => {
+    alexa = VirtualAlexa.Builder()
+      .handler(handler)
+      .interactionModelFile("models/de-DE.json")
+      .create();
+  });
+
+  it("should tell today's losung", async () => {
+    const result = await alexa.request().intent("TodayIntent").send();
+    expect(result.response.outputSpeech.ssml).toContain("Die Losung von heute");
+  });
+
+});
+
 describe("DateIntent", () => {
   let alexa: VirtualAlexa;
   beforeEach(() => {
