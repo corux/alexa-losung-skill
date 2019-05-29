@@ -12,7 +12,7 @@
     "lint:fix": "npm run lint -- --fix",
     "prebuild": "npm run download-losungen",
     "build": "npm-run-all --parallel build:app:*",
-    "build:app:assets": "cp -a ./src/utils/data dist/",
+    "build:app:assets": "mkdir -p dist/data && cp -a ./src/utils/data/*.xml dist/data/",
     "build:app:skill": "parcel $PARCEL_CMD src/index.ts --target node --bundle-node-modules",
     "build:app:flash-briefing": "parcel $PARCEL_CMD src/flash-briefing.ts --target node --bundle-node-modules",
     "build:dev": "PARCEL_CMD=watch npm run build",
