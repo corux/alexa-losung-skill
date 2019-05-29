@@ -1,4 +1,4 @@
-import { SkillBuilders } from "ask-sdk-core";
+import { DefaultApiClient, SkillBuilders } from "ask-sdk-core";
 import {
   AmazonHelpIntentHandler,
   AmazonStopIntentHandler,
@@ -25,4 +25,5 @@ export const handler = SkillBuilders.custom()
   .addResponseInterceptors(
     new LogInterceptor(),
   )
+  .withApiClient(new DefaultApiClient())
   .lambda();

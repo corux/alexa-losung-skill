@@ -6,7 +6,7 @@ export class TimezoneInterceptor implements RequestInterceptor {
   public async process(handlerInput: HandlerInput) {
     const deviceId = handlerInput.requestEnvelope.context.System.device.deviceId;
 
-    if (!handlerInput.serviceClientFactory) {
+    if (!deviceId) {
       return;
     }
 
