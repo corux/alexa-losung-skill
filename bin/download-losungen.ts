@@ -27,7 +27,7 @@ for (let i = -1; i <= 1; i++) {
   https.get(url, (response) => {
     if (response.statusCode === 200) {
       const file = fs.createWriteStream(destinationFile);
-      response.pipe(unzipper.Parse() as any)
+      response.pipe(unzipper.Parse())
         .on("entry", (entry) => {
           if (entry.path.toLowerCase().endsWith(".xml")) {
             entry.pipe(file);
