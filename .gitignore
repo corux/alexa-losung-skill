@@ -2,7 +2,7 @@ dist/
 node_modules/
 npm-debug.log
 aws.config.json
-src/data/*.xml
+**/data/*.xml
 .serverless
 hooks/
 .cache/

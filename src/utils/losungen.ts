@@ -1,5 +1,7 @@
 import { parse } from "fast-xml-parser";
+import * as fs from "fs";
 import { DateTime, Duration } from "luxon";
+import * as path from "path";
 
 interface ILosung {
   Datum: string;
@@ -12,6 +14,8 @@ interface ILosung {
 }
 
 export class Losungen {
+
+  private static cache: { [year: number]: ILosung[] } = {};
 
   /** Gets the text, which should be read for the given date. */
   public async getText(date: DateTime): Promise<string> {
@@ -41,13 +45,18 @@ export class Losungen {
   }
 
   private async loadLosung(year: number): Promise<ILosung[]> {
-    const xmlString = await import(`../data/${year}.xml`);
-    const data: { FreeXml: { Losungen: ILosung[] } } = parse(xmlString);
-    if (data && data.FreeXml && data.FreeXml.Losungen) {
-      return data.FreeXml.Losungen;
+    if (!Losungen.cache[year]) {
+      const file = path.resolve(__dirname, `./data/${year}.xml`);
+      const xmlString = fs.readFileSync(file).toString();
+      const data: { FreeXml: { Losungen: ILosung[] } } = parse(xmlString);
+      if (data && data.FreeXml && data.FreeXml.Losungen) {
+        Losungen.cache[year] = data.FreeXml.Losungen;
+      } else {
+        throw new Error("Failed to load data");
+      }
     }
 
-    throw new Error("Failed to load data");
+    return Losungen.cache[year];
   }
 
   private fixVerseForSpeak(text: string): string {
