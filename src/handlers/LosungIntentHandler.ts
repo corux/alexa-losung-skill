@@ -18,11 +18,12 @@ export class LosungIntentHandler extends BaseRequestHandler {
     }
 
     const instance = new Losungen();
-    const losung = await instance.getLosung(date);
     const losungText = await instance.getText(date);
-    return handlerInput.getResponseBuilder()
-      .speak(losungText)
-      .addAplDirectiveIfSupported({
+    const responseBuilder = handlerInput.getResponseBuilder()
+      .speak(losungText);
+    try {
+      const losung = await instance.getLosung(date);
+      responseBuilder.addAplDirectiveIfSupported({
         datasources: {
           data: {
             lehrtext: {
@@ -40,8 +41,12 @@ export class LosungIntentHandler extends BaseRequestHandler {
         document: AplMainDocument,
         token: "losung",
         type: "Alexa.Presentation.APL.RenderDocument",
-      })
-      .getResponse();
+      });
+    } catch (e) {
+      // do not show APL if losung is unavailable
+    }
+
+    return responseBuilder.getResponse();
   }
 
   private fixText(text: string): string {

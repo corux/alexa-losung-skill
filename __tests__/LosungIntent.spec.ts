@@ -57,6 +57,11 @@ describe("DateIntent", () => {
     expect(result.response.outputSpeech.ssml).toContain("Die Losung vom 1.1.2019");
   });
 
+  it("should tell if losung for requested year is unavailable", async () => {
+    const result = await alexa.request().intent("DateIntent").slot("date", "2000-01-01").send();
+    expect(result.response.outputSpeech.ssml).toContain("Ich konnte keine Losung vom 1.1.2000 finden.");
+  });
+
   describe("Fixed text", () => {
     it("should fix Verse Text for speak", async () => {
       const result = await alexa.request().intent("DateIntent").slot("date", "2019-11-21").send();

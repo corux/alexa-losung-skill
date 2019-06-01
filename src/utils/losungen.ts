@@ -49,11 +49,7 @@ export class Losungen {
       const file = path.resolve(__dirname, `./data/${year}.xml`);
       const xmlString = fs.readFileSync(file).toString();
       const data: { FreeXml: { Losungen: ILosung[] } } = parse(xmlString);
-      if (data && data.FreeXml && data.FreeXml.Losungen) {
-        Losungen.cache[year] = data.FreeXml.Losungen;
-      } else {
-        throw new Error("Failed to load data");
-      }
+      Losungen.cache[year] = data.FreeXml.Losungen;
     }
 
     return Losungen.cache[year];
