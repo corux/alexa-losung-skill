@@ -25,6 +25,7 @@
     "deploy:skills": "ask deploy"
   },
   "devDependencies": {
+    "@corux/ask-extensions": "1.0.0",
     "@types/aws-lambda": "8.10.26",
     "@types/jest": "24.0.13",
     "@types/luxon": "1.13.0",

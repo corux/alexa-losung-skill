@@ -1,13 +1,13 @@
-import { HandlerInput } from "ask-sdk-core";
+import { BaseRequestHandler, IExtendedHandlerInput, Intents, Request } from "@corux/ask-extensions";
 import { IntentRequest, Response } from "ask-sdk-model";
 import { DateTime } from "luxon";
 import { document as AplMainDocument } from "../apl/main.json";
-import { BaseIntentHandler, getResponseBuilder, Intents, Losungen, Request } from "../utils";
+import { Losungen } from "../utils";
 
 @Request("LaunchRequest")
 @Intents("TodayIntent", "DateIntent")
-export class LosungIntentHandler extends BaseIntentHandler {
-  public async handle(handlerInput: HandlerInput): Promise<Response> {
+export class LosungIntentHandler extends BaseRequestHandler {
+  public async handle(handlerInput: IExtendedHandlerInput): Promise<Response> {
     const intentRequest = handlerInput.requestEnvelope.request as IntentRequest;
     const dateSlot = (intentRequest.intent && intentRequest.intent.slots || {}).date;
 
@@ -20,7 +20,7 @@ export class LosungIntentHandler extends BaseIntentHandler {
     const instance = new Losungen();
     const losung = await instance.getLosung(date);
     const losungText = await instance.getText(date);
-    return getResponseBuilder(handlerInput)
+    return handlerInput.getResponseBuilder()
       .speak(losungText)
       .addAplDirectiveIfSupported({
         datasources: {

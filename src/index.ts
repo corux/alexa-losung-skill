@@ -1,12 +1,11 @@
+import { LogInterceptor, SessionEndedHandler, TimezoneInterceptor } from "@corux/ask-extensions";
 import { DefaultApiClient, SkillBuilders } from "ask-sdk-core";
 import {
   AmazonHelpIntentHandler,
   AmazonStopIntentHandler,
   CustomErrorHandler,
   LosungIntentHandler,
-  SessionEndedHandler,
 } from "./handlers";
-import { LogInterceptor, TimezoneInterceptor } from "./interceptors";
 
 export const handler = SkillBuilders.custom()
   .addRequestHandlers(
