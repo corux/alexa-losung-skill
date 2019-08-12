@@ -34,7 +34,7 @@
     "ask-cli": "1.7.10",
     "ask-sdk-core": "2.7.0",
     "ask-sdk-model": "1.18.0",
-    "commander": "2.20.0",
+    "commander": "3.0.0",
     "fast-xml-parser": "3.12.19",
     "jest": "24.8.0",
     "jest-raw-loader": "1.0.1",
