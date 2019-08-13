@@ -1,25 +1,21 @@
 {
     "document": {
         "type": "APL",
-        "version": "1.0",
+        "version": "1.1",
         "theme": "dark",
         "import": [
             {
                 "name": "alexa-layouts",
-                "version": "1.0.0"
-            },
-            {
-                "name": "alexa-styles",
-                "version": "1.0.0"
+                "version": "1.1.0"
             }
         ],
         "resources": [
             {
                 "description": "Common margins and padding",
                 "dimensions": {
-                    "marginLeft": 40,
-                    "marginRight": 40,
-                    "marginBottom": 40
+                    "marginLeft": "@spacingMedium",
+                    "marginRight": "@spacingMedium",
+                    "marginBottom": "@spacingMedium"
                 }
             }
         ],
@@ -37,7 +33,7 @@
                     "fontStyle": "italic",
                     "fontSize": "@fontSizeSmall",
                     "fontWeight": "@fontWeightMedium",
-                    "color": "@colorSecondaryText",
+                    "color": "@colorText",
                     "textAlign": "${viewport.shape == 'round' ? 'center' : 'auto'}"
                 }
             }
@@ -97,32 +93,30 @@
                             "paddingLeft": "@marginLeft",
                             "paddingRight": "@marginRight",
                             "paddingBottom": "@marginBottom",
-                            "item": [
-                                {
-                                    "type": "Container",
-                                    "item": [
-                                        {
-                                            "type": "Container",
-                                            "item": {
-                                                "text": "${payload.data.losung.text}",
-                                                "verse": "${payload.data.losung.verse}",
+                            "item": {
+                                "type": "Container",
+                                "item": [
+                                    {
+                                        "type": "Container",
+                                        "item": {
+                                            "text": "${payload.data.losung.text}",
+                                            "verse": "${payload.data.losung.verse}",
+                                            "type": "BiblePassage"
+                                        }
+                                    },
+                                    {
+                                        "type": "Container",
+                                        "item": [
+                                            {
+                                                "text": "${payload.data.lehrtext.text}",
+                                                "verse": "${payload.data.lehrtext.verse}",
                                                 "type": "BiblePassage"
                                             }
-                                        },
-                                        {
-                                            "type": "Container",
-                                            "item": [
-                                                {
-                                                    "text": "${payload.data.lehrtext.text}",
-                                                    "verse": "${payload.data.lehrtext.verse}",
-                                                    "type": "BiblePassage"
-                                                }
-                                            ],
-                                            "spacing": "@spacingSmall"
-                                        }
-                                    ]
-                                }
-                            ]
+                                        ],
+                                        "spacing": "@spacingSmall"
+                                    }
+                                ]
+                            }
                         }
                     ]
                 }
