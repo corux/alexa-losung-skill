@@ -27,7 +27,7 @@
   "devDependencies": {
     "@corux/ask-extensions": "1.0.0",
     "@types/aws-lambda": "8.10.31",
-    "@types/jest": "24.0.17",
+    "@types/jest": "24.0.18",
     "@types/luxon": "1.15.2",
     "@types/node": "10.14.1",
     "@types/unzipper": "0.10.0",
@@ -45,9 +45,9 @@
     "serverless": "1.50.0",
     "ts-jest": "24.0.2",
     "ts-node": "8.3.0",
-    "tslint": "5.18.0",
+    "tslint": "5.19.0",
     "typescript": "3.5.3",
-    "unzipper": "0.10.3",
+    "unzipper": "0.10.4",
     "virtual-alexa": "0.7.2"
   }
 }
