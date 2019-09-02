@@ -34,7 +34,7 @@
     "ask-cli": "1.7.10",
     "ask-sdk-core": "2.7.0",
     "ask-sdk-model": "1.19.0",
-    "commander": "3.0.0",
+    "commander": "3.0.1",
     "fast-xml-parser": "3.12.20",
     "jest": "24.9.0",
     "jest-raw-loader": "1.0.1",
@@ -42,11 +42,11 @@
     "npm-run-all": "4.1.5",
     "parcel-bundler": "1.12.3",
     "parcel-plugin-raw-xml": "1.0.1",
-    "serverless": "1.50.0",
+    "serverless": "1.51.0",
     "ts-jest": "24.0.2",
     "ts-node": "8.3.0",
     "tslint": "5.19.0",
-    "typescript": "3.5.3",
+    "typescript": "3.6.2",
     "unzipper": "0.10.4",
     "virtual-alexa": "0.7.2"
   }
