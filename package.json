@@ -31,7 +31,7 @@
     "@types/luxon": "1.15.2",
     "@types/node": "10.14.1",
     "@types/unzipper": "0.10.0",
-    "ask-cli": "1.7.10",
+    "ask-cli": "1.7.13",
     "ask-sdk-core": "2.7.0",
     "ask-sdk-model": "1.19.0",
     "commander": "3.0.1",
@@ -47,7 +47,7 @@
     "ts-node": "8.3.0",
     "tslint": "5.19.0",
     "typescript": "3.6.2",
-    "unzipper": "0.10.4",
+    "unzipper": "0.10.5",
     "virtual-alexa": "0.7.2"
   }
 }
