@@ -24,7 +24,7 @@
             "functionName": "alexa-losung-skill-production-skill",
             "handler": "index.handler",
             "revisionId": "83b31c93-be86-4d27-b7ff-eb8a4b6c0b26",
-            "runtime": "nodejs8.10"
+            "runtime": "nodejs12.x"
           }
         ]
       }
