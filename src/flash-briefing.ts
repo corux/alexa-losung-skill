@@ -10,7 +10,7 @@ const handler: Handler = async () => {
   const text = await new Losungen().getText(today);
   return {
     mainText: text,
-    redirectionUrl: "http://www.losungen.de/fileadmin/media-losungen/kalender/kalendermobil.html",
+    redirectionUrl: "https://www.losungen.de/fileadmin/media-losungen/kalender/kalendermobil.html",
     titleText: "Die Losung von heute",
     uid: today.toISO(),
     updateDate: today.toISO(),
