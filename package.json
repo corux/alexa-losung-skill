@@ -36,7 +36,7 @@
     "@types/luxon": "1.21.0",
     "@types/node": "12.12.22",
     "@types/unzipper": "0.10.1",
-    "ask-cli": "1.7.19",
+    "ask-cli": "1.7.20",
     "ask-sdk-core": "2.7.0",
     "ask-sdk-model": "1.25.1",
     "commander": "4.0.1",
@@ -48,12 +48,12 @@
     "parcel-bundler": "1.12.4",
     "parcel-plugin-raw-xml": "1.0.1",
     "parcel-plugin-static-files-copy": "2.2.1",
-    "serverless": "1.60.4",
+    "serverless": "1.60.5",
     "ts-jest": "24.2.0",
     "ts-node": "8.5.4",
     "tslint": "5.20.1",
     "typescript": "3.7.4",
     "unzipper": "0.10.5",
-    "virtual-alexa": "0.7.3"
+    "virtual-alexa": "0.7.5"
   }
 }
