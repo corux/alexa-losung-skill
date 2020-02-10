@@ -32,14 +32,14 @@
   "devDependencies": {
     "@corux/ask-extensions": "2.0.0",
     "@types/aws-lambda": "8.10.40",
-    "@types/jest": "25.1.1",
+    "@types/jest": "25.1.2",
     "@types/luxon": "1.21.0",
     "@types/node": "12.12.22",
     "@types/unzipper": "0.10.1",
     "ask-cli": "1.7.22",
     "ask-sdk-core": "2.7.0",
     "ask-sdk-model": "1.25.1",
-    "commander": "4.1.0",
+    "commander": "4.1.1",
     "fast-xml-parser": "3.16.0",
     "jest": "25.1.0",
     "jest-raw-loader": "1.0.1",
@@ -48,12 +48,12 @@
     "parcel-bundler": "1.12.4",
     "parcel-plugin-raw-xml": "1.0.1",
     "parcel-plugin-static-files-copy": "2.3.1",
-    "serverless": "1.62.0",
-    "ts-jest": "25.1.0",
+    "serverless": "1.63.0",
+    "ts-jest": "25.2.0",
     "ts-node": "8.6.2",
     "tslint": "5.20.1",
     "typescript": "3.7.5",
-    "unzipper": "0.10.7",
+    "unzipper": "0.10.8",
     "virtual-alexa": "0.7.5"
   }
 }
