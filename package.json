@@ -36,7 +36,7 @@
     "@types/luxon": "1.22.0",
     "@types/node": "12.12.22",
     "@types/unzipper": "0.10.3",
-    "ask-cli": "1.7.23",
+    "ask-cli": "2.0.1",
     "ask-sdk-core": "2.8.0",
     "ask-sdk-model": "1.28.0",
     "commander": "5.0.0",
