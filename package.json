@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@corux/ask-extensions": "2.0.0",
-    "@types/aws-lambda": "8.10.50",
+    "@types/aws-lambda": "8.10.51",
     "@types/jest": "25.2.1",
     "@types/luxon": "1.22.0",
     "@types/node": "12.12.22",
@@ -39,7 +39,7 @@
     "ask-cli": "2.1.1",
     "ask-sdk-core": "2.8.0",
     "ask-sdk-model": "1.28.0",
-    "commander": "5.0.0",
+    "commander": "5.1.0",
     "fast-xml-parser": "3.16.0",
     "jest": "25.4.0",
     "jest-raw-loader": "1.0.1",
@@ -48,12 +48,12 @@
     "parcel-bundler": "1.12.4",
     "parcel-plugin-raw-xml": "1.0.1",
     "parcel-plugin-static-files-copy": "2.3.1",
-    "serverless": "1.67.3",
+    "serverless": "1.68.0",
     "ts-jest": "25.4.0",
-    "ts-node": "8.8.2",
+    "ts-node": "8.9.1",
     "tslint": "6.1.1",
     "typescript": "3.8.3",
-    "unzipper": "0.10.10",
+    "unzipper": "0.10.11",
     "virtual-alexa": "0.7.5"
   }
 }
