@@ -41,7 +41,7 @@
     "ask-sdk-model": "1.28.0",
     "commander": "5.1.0",
     "fast-xml-parser": "3.16.0",
-    "jest": "25.5.4",
+    "jest": "26.0.1",
     "jest-raw-loader": "1.0.1",
     "luxon": "1.24.1",
     "npm-run-all": "4.1.5",
