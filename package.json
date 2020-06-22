@@ -48,7 +48,7 @@
     "parcel-bundler": "1.12.4",
     "parcel-plugin-raw-xml": "1.0.1",
     "parcel-plugin-static-files-copy": "2.4.3",
-    "serverless": "1.72.0",
+    "serverless": "1.73.1",
     "ts-jest": "26.1.0",
     "ts-node": "8.10.2",
     "tslint": "6.1.2",
