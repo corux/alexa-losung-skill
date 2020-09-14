@@ -38,7 +38,7 @@
     "@types/unzipper": "0.10.3",
     "ask-cli": "2.15.0",
     "ask-sdk-core": "2.9.0",
-    "ask-sdk-model": "1.31.0",
+    "ask-sdk-model": "1.32.0",
     "commander": "6.1.0",
     "fast-xml-parser": "3.17.4",
     "jest": "26.4.2",
