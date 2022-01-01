@@ -17,9 +17,9 @@ if (!fs.existsSync(destination)) {
 }
 
 const currentYear = new Date().getFullYear();
-const yearsToDownload = program.year ? [parseInt(program.year)] : [currentYear - 1, currentYear, currentYear + 1];
+const yearsToDownload = program.year ? [parseInt(program.year, 10)] : [currentYear - 1, currentYear, currentYear + 1];
 
-for (let year of yearsToDownload) {
+for (const year of yearsToDownload) {
   const url = `https://www.losungen.de/fileadmin/media-losungen/download/Losung_${year}_XML.zip`;
   const destinationFile = path.join(process.cwd(), destination, `${year}.xml`);
   if (fs.existsSync(destinationFile)) {

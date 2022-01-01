@@ -46,7 +46,10 @@ export class Losungen {
 
   private async loadLosung(year: number): Promise<ILosung[]> {
     if (!Losungen.cache[year]) {
-      const file = path.resolve(__dirname, `./data/${year}.xml`);
+      const file = [process.env.DATA_DIR, path.join(__dirname, "data")]
+        .filter(Boolean)
+        .map(dir => path.resolve(dir, `${year}.xml`))
+        .filter(f => fs.existsSync(f))[0];
       const xmlString = fs.readFileSync(file).toString();
       const data: { FreeXml: { Losungen: ILosung[] } } = parse(xmlString);
       Losungen.cache[year] = data.FreeXml.Losungen;

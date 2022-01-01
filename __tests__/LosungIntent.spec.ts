@@ -1,9 +1,11 @@
 import { VirtualAlexa } from "virtual-alexa";
 import { handler } from "../src";
+import * as path from "path";
 
 describe("TodayIntent", () => {
   let alexa: VirtualAlexa;
   beforeEach(() => {
+    process.env.DATA_DIR = path.join(__dirname, "testdata");
     alexa = VirtualAlexa.Builder()
       .handler(handler)
       .interactionModelFile("models/de-DE.json")
