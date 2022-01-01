@@ -7,6 +7,7 @@ import * as unzipper from "unzipper";
 
 program
   .option("--destination <path>", "Schema file to update.")
+  .option("--year <year>", "Year to download. If unset, the current, previous and next year will be downloaded.")
   .parse(process.argv);
 
 const destination = program.destination;
@@ -16,8 +17,9 @@ if (!fs.existsSync(destination)) {
 }
 
 const currentYear = new Date().getFullYear();
-for (let i = -1; i <= 1; i++) {
-  const year = currentYear + i;
+const yearsToDownload = program.year ? [parseInt(program.year)] : [currentYear - 1, currentYear, currentYear + 1];
+
+for (let year of yearsToDownload) {
   const url = `https://www.losungen.de/fileadmin/media-losungen/download/Losung_${year}_XML.zip`;
   const destinationFile = path.join(process.cwd(), destination, `${year}.xml`);
   if (fs.existsSync(destinationFile)) {
