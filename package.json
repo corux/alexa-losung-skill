@@ -34,7 +34,7 @@
     "@types/aws-lambda": "8.10.109",
     "@types/jest": "29.2.4",
     "@types/luxon": "3.1.0",
-    "@types/node": "18.11.13",
+    "@types/node": "18.11.17",
     "@types/unzipper": "0.10.5",
     "ask-cli": "2.28.0",
     "ask-sdk-core": "2.12.1",
