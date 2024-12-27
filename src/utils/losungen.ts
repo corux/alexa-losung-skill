@@ -40,8 +40,8 @@ export class Losungen {
   /** Gets the losung object for the given date. */
   public async getLosung(date: DateTime): Promise<ILosung> {
     const data = await this.loadLosung(date.year);
-    const dateString = date.toFormat("yyyy-MM-dd'T00:00:00'");
-    return data.find((n) => n.Datum === dateString);
+    const dateString = date.toFormat("yyyy-MM-dd");
+    return data.find((n) => n.Datum.startsWith(dateString));
   }
 
   private async loadLosung(year: number): Promise<ILosung[]> {
